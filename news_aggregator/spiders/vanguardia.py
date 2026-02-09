@@ -9,7 +9,7 @@ class LaVanguardiaSpider(scrapy.Spider):
         return text.strip() if text else ""
 
     def parse(self, response):
-        for article in response.css("article h2 a")[:15]:
+        for article in response.css("article h2 a"):
             title = self.clean(article.css("::text").get())
             url = article.attrib.get("href")
 
