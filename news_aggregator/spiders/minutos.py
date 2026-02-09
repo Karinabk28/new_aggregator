@@ -9,7 +9,7 @@ class VeinteMinutosSpider(scrapy.Spider):
         return text.strip() if text else ""
 
     def parse(self, response):
-        for article in response.css("article h2 a")[:10]:
+        for article in response.css("article h2 a"):
             title = self.clean(" ".join(article.css("::text").getall()))
             url = article.attrib.get("href")
 
